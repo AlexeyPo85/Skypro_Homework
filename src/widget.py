@@ -11,3 +11,9 @@ def mask_account_card(user_account: str) -> str:
     else:
         return get_mask_card_number(splited_user_account[-1])
 
+
+def get_date(date_and_info: str) -> str:
+    info_splited = date_and_info.split("T")
+    date_splited = info_splited[0].split("-")
+    date = f"{date_splited[2]}.{date_splited[1]}.{date_splited[0]}"
+    return date
