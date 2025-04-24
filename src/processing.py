@@ -1,6 +1,6 @@
 def filter_by_state(list_of_dicts: list[dict], state_value: str = 'EXECUTED') -> list[dict]:
     """ Функция возвращает отсортированный список по значению 'EXECUTED',
-    или список со значением 'CANCELED', если передан аргумент 'CANCELED'.
+    или список со значением переданным в state_value.
     """
 
     filtered_list = []
