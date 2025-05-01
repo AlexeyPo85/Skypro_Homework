@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card
+from src.widget import mask_account_card, get_date
 
 
 def test_mask_account_card(name_card_number):
@@ -25,3 +25,21 @@ def test_mask_account_card_2(name_account_number):
                                                 ])
 def test_mask_account_card_3(input_data, result):
     assert mask_account_card(input_data) == result
+
+
+def test_get_date(date_in_data):
+    assert get_date(date_in_data) == '11.03.2024'
+
+
+@pytest.mark.parametrize('input_data, result', [('1988-03-60T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ('3000-01-01T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ('30-01-2001T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ('T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ('12-2024T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ('2024T02:26:18.671407', 'Введено не корректное значение даты'),
+                                                ([1,2,3], 'Введено не корректное значение даты'),
+                                                ('2000-05-05T02:26:18.671407', '05.05.2000'),
+                                                ('1674-12-25T02:26:18.671407', '25.12.1674'),
+                                                ])
+def test_get_date_2(input_data, result):
+    assert get_date(input_data) == result

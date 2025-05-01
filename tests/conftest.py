@@ -15,3 +15,7 @@ def name_card_number():
 @pytest.fixture
 def name_account_number():
     return 'Счет 73654108430135874305'
+
+@pytest.fixture
+def date_in_data():
+    return '2024-03-11T02:26:18.671407'

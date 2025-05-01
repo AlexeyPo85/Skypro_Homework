@@ -10,7 +10,7 @@ def get_mask_card_number(card_number: str) -> str:
     if not isinstance(card_number, str):
         return 'Введён не корректный номер карты'
 
-    return f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
+    return f'{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}'
 
 
 def get_mask_account(account: str) -> str:
@@ -25,4 +25,4 @@ def get_mask_account(account: str) -> str:
     if not isinstance(account, str):
         return 'Введён не корректный номер счёта'
 
-    return f"**{account[-4:]}"
+    return f'**{account[-4:]}'
