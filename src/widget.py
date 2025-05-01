@@ -12,7 +12,7 @@ def mask_account_card(user_account: str) -> str:
 
     splited_user_account = user_account.split()
     if splited_user_account[0] == "Счет":
-        return get_mask_account(splited_user_account[-1])
+        return get_mask_account(splited_user_account[1])
     else:
         return get_mask_card_number(splited_user_account[-1])
 
