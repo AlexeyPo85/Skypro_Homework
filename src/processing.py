@@ -6,10 +6,14 @@ def filter_by_state(list_of_dicts: list[dict], state_value: str = 'EXECUTED') ->
     filtered_list = []
     if state_value == 'EXECUTED':
         for dict_data in list_of_dicts:
+            if not 'state' in dict_data:
+                raise KeyError
             if dict_data['state'] == 'EXECUTED':
                 filtered_list.append(dict_data)
     else:
         for dict_data in list_of_dicts:
+            if not 'state' in dict_data:
+                raise KeyError
             if dict_data['state'] == state_value:
                 filtered_list.append(dict_data)
 
