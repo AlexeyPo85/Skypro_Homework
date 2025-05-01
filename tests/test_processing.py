@@ -1,27 +1,18 @@
 import pytest
 
-from src.processing import filter_by_state
+from src.processing import filter_by_state, sort_by_date
 
 
-def test_filter_by_state(dicts):
-    assert filter_by_state(dicts) == [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
-                                      {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
+def test_filter_by_state(dicts, dicts_result_1):
+    assert filter_by_state(dicts) == dicts_result_1
 
 
-def test_filter_by_state_2(dicts):
-    assert filter_by_state(dicts, 'CANCELED') == [{'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
-                                                  {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
+def test_filter_by_state_2(dicts, dicts_result_2):
+    assert filter_by_state(dicts, 'CANCELED') == dicts_result_2
 
 
-@pytest.mark.parametrize('input_dicts, states, result', [([{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
-                                                        {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
-                                                        {'id': 594226727, 'state': 'NOT FOUND', 'date': '2018-09-12T21:27:25.241689'},
-                                                        {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}],
-                                                          'NOT FOUND',
-                                                          [{'id': 594226727, 'state': 'NOT FOUND', 'date': '2018-09-12T21:27:25.241689'}]),
-                                                         ])
-def test_filter_by_state_3(input_dicts, states, result):
-    assert filter_by_state(input_dicts, states) == result
+def test_filter_by_random_state(dicts_random_state, dicts_random_state_result):
+    assert filter_by_state(dicts_random_state, 'NOT FOUND') == dicts_random_state_result
 
 
 def test_filter_by_state_4(dicts_no_state_value):
@@ -39,3 +30,19 @@ def test_filter_by_state_6(dicts_no_state):
 
 def test_filter_by_state_7(dicts_no_type_str):
     assert filter_by_state(dicts_no_type_str) == []
+
+
+def test_sort_by_date_true(dicts_to_data, sorted_dicts_true):
+    assert sort_by_date(dicts_to_data) == sorted_dicts_true
+
+
+def test_sort_by_date_false(dicts_to_data, sorted_dicts_false):
+    assert sort_by_date(dicts_to_data, False) == sorted_dicts_false
+
+
+def test_sort_by_date_no_data_value(dicts_no_data_value, dicts_no_data_value_result):
+    assert sort_by_date(dicts_no_data_value) == dicts_no_data_value_result
+
+
+def test_sort_by_date_no_data(dicts_no_data, dicts_no_data_result):
+    assert sort_by_date(dicts_no_data) == dicts_no_data_result

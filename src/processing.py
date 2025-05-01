@@ -34,9 +34,16 @@ def sort_by_date(list_of_dicts: list[dict], sort_arg: bool = True) -> list[dict]
     """ Функция возвращает отсортированный по дате список(по умолчанию-по убыванию,
     или по возрастанию, если в параметр со значением по умолчанию введено False)."""
 
+    new_list = []
+
+    for dicts in list_of_dicts:
+        if 'date' in dicts:
+            if dicts['date']:
+                new_list.append(dicts)
+
     if sort_arg:
-        sorted_list = sorted(list_of_dicts, key=lambda d: d['date'], reverse=True)
+        sorted_list = sorted(new_list, key=lambda d: d['date'], reverse=True)
     else:
-        sorted_list = sorted(list_of_dicts, key=lambda d: d['date'])
+        sorted_list = sorted(new_list, key=lambda d: d['date'])
 
     return sorted_list
