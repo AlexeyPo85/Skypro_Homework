@@ -16,7 +16,9 @@ def test_filter_by_random_state(dicts_random_state, dicts_random_state_result):
 
 
 def test_filter_by_state_4(dicts_no_state_value):
-    assert filter_by_state(dicts_no_state_value) == [{'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
+    assert filter_by_state(dicts_no_state_value) == [
+        {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
+    ]
 
 
 def test_filter_by_state_5(dicts):

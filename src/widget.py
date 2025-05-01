@@ -38,7 +38,7 @@ def get_date(date_and_info: str) -> str:
 
     if not 0 < int(date_splited[2]) < 31 or not 0 < int(date_splited[1]) < 13 or not 0 < int(date_splited[0]) < 2025:
         return 'Введено не корректное значение даты'
-    #Библиотеки ещё не изучали, поэтому принял что в месяце 30 дней
+    # Библиотеки ещё не изучали, поэтому принял что в месяце 30 дней
 
     date = f'{date_splited[2]}.{date_splited[1]}.{date_splited[0]}'
     return date
