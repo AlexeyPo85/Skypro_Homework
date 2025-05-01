@@ -12,7 +12,7 @@ def mask_account_card(user_account: str) -> str:
 
 
 def get_date(date_and_info: str) -> str:
-    """ Функция возвращае дату  в формате ДД.ММ.ГГГГ"""
+    """ Функция возвращает дату  в формате ДД.ММ.ГГГГ"""
 
     info_splited = date_and_info.split("T")
     date_splited = info_splited[0].split("-")
