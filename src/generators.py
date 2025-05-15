@@ -16,6 +16,8 @@ def filter_by_currency(transact: list[dict], code: str) -> iter:
 def transaction_descriptions(transact: list[dict]) -> iter:
     """ Функция возвращает описание каждой операции из списка словарей с транзакциями."""
 
+    if transact == [{}]:
+        yield "Отсутствует список транзакций"
     for operation in transact:
         descript = operation["description"]
         yield descript
