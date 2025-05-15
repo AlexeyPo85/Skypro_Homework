@@ -1,0 +1,28 @@
+from src.generators import filter_by_currency
+from tests.conftest import list_of_transactions
+
+
+def test_filter_by_currency_1(list_of_transactions, for_filter_by_currency_1, for_filter_by_currency_2):
+    result = filter_by_currency(list_of_transactions, "USD")
+    assert next(result) == for_filter_by_currency_1
+    assert next(result) == for_filter_by_currency_2
+
+
+def test_filter_by_currency_2(list_of_transactions, for_filter_by_currency_3):
+    result = filter_by_currency(list_of_transactions, "RUB")
+    assert next(result) == for_filter_by_currency_3
+
+
+def test_filter_by_currency_3():
+    result = filter_by_currency([{}], "USD")
+    assert next(result) == "Отсутствует список транзакций"
+
+
+def test_filter_by_currency_4(list_of_transactions):
+    result = filter_by_currency(list_of_transactions, "")
+    assert next(result) == "Не задана искомая валюта"
+
+
+def test_filter_by_currency_5(list_of_transactions,):
+    result = filter_by_currency(list_of_transactions, "EUR")
+    assert next(result) == "Транзакции в заданной валюте не найдены"

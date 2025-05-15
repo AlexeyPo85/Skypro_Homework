@@ -2,9 +2,15 @@ def filter_by_currency(transact: list[dict], code: str) -> iter:
     """ Функция принимает список словарей транзакций и возвращает
     итератор, который поочередно выдает транзакции по заданной валюте."""
 
-    for action in transact:
-        if action["operationAmount"]["currency"]["code"] == code:
-            yield action
+    if transact == [{}]:
+        yield "Отсутствует список транзакций"
+    if code == "":
+        yield "Не задана искомая валюта"
+    if code == "USD" or code == "RUB":
+        for action in transact:
+            if action["operationAmount"]["currency"]["code"] == code:
+                yield action
+    yield "Транзакции в заданной валюте не найдены"
 
 
 def transaction_descriptions(transact: list[dict]) -> iter:
