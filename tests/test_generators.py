@@ -1,7 +1,4 @@
-from unittest import removeResult
-
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-from tests.conftest import list_of_transactions
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency_1(list_of_transactions, for_filter_by_currency_1, for_filter_by_currency_2):
@@ -61,9 +58,8 @@ def test_card_number_generator():
     assert next(result) == "0000 0000 0000 0005"
 
 
-
 def test_card_number_generator_2():
-    result = card_number_generator(-1,5)
+    result = card_number_generator(-1, 5)
     assert next(result) == "Введён неверный диапазон"
 
 
