@@ -27,7 +27,15 @@ def card_number_generator(start: int, stop: int) -> iter:
     """ Функция генерирует номера карт от 0000 0000 0000 0000 до 9999 9999 9999 9999
     по заданному диапазону."""
 
-    zero_number = '0000000000000000'
-    for num in range(start, stop + 1):
-        result_num = zero_number[: -len(str(num))] + str(num)
-        yield f'{result_num[: 4]} {result_num[4: 8]} {result_num[8: 12]} {result_num[12:]}'
+    if isinstance(start, int) and isinstance(stop, int):
+        if start < 0 or stop < 0:
+            yield "Введён неверный диапазон"
+        zero_number = '0000000000000000'
+        for num in range(start, stop + 1):
+            if num <= 9999999999999999:
+                result_num = zero_number[: -len(str(num))] + str(num)
+                yield f'{result_num[: 4]} {result_num[4: 8]} {result_num[8: 12]} {result_num[12:]}'
+            else:
+                yield "Превышено количество знаков в номере карты"
+    else:
+        yield "Введён неверный диапазон"
