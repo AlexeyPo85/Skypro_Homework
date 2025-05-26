@@ -1,5 +1,8 @@
+from functools import wraps
+
 def log(filename):
     def wrapper(func):
+        @wraps(func)
         def inner(*args, **kwargs):
             try:
                 result = func(*args, **kwargs)
