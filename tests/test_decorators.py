@@ -31,8 +31,8 @@ def test_log_3():
     with open('result_text', 'r', encoding='utf-8') as file:
         text_in_file = file.read()
 
-        assert text_in_file == (f'Функция {add_numbers.__name__}, вызвана с аргументами (3, 5), {{}} выполнена успешно. '
-                            f'Результат: 8')
+        assert text_in_file == (f'Функция {add_numbers.__name__}, вызвана с аргументами (3, 5), {{}} '
+                                f'выполнена успешно. Результат: 8')
 
 
 def test_log_4():
@@ -43,4 +43,4 @@ def test_log_4():
     with open('result_text', 'r', encoding='utf-8') as file:
         text_in_file = file.read()
         assert text_in_file == (f'Функция {division_numbers.__name__} вывела ошибку:division by zero. '
-                            f'Входные данные:(5, 0), {{}}')
+                                f'Входные данные:(5, 0), {{}}')
