@@ -1,6 +1,8 @@
 import json
 import os.path
 
+from src.external_api import convert_to_rub
+
 
 def get_list_transactions(json_file: json) -> list[dict]:
     " Функция принимает файл формата json, и возвращает список транзакций."
@@ -17,4 +19,12 @@ def get_list_transactions(json_file: json) -> list[dict]:
             return []
 
 
+def get_amount_rub(transaction: dict) -> float:
+    """ Функция принимает данные транзакции и возвращает сумму транзакции в рублях.
+    Если транзакция в USD или EUR, происходит конвертация в RUB по текущему курсую"""
 
+    if transaction["operationAmount"]["currency"]["code"] == "RUB":
+        return float(transaction["operationAmount"]["amount"])
+    else:
+        return convert_to_rub(transaction["operationAmount"]["currency"]["code"],
+                              transaction["operationAmount"]["amount"])
