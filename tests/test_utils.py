@@ -5,28 +5,28 @@ from unittest.mock import patch
 @patch("src.utils.json.load")
 def test_get_list_transactions(mocked_get):
     mocked_get.return_value = [{
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "31957.58",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"}
-        }
-    },]
+                                "id": 441945886,
+                                "state": "EXECUTED",
+                                "date": "2019-08-26T10:50:58.294041",
+                                "operationAmount": {
+                                    "amount": "31957.58",
+                                    "currency": {
+                                        "name": "руб.",
+                                        "code": "RUB"}
+                                    }
+                                },]
     result = get_list_transactions("operations.json")
     assert result == [{
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "31957.58",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"}
-        }
-    },]
+                    "id": 441945886,
+                    "state": "EXECUTED",
+                    "date": "2019-08-26T10:50:58.294041",
+                    "operationAmount": {
+                        "amount": "31957.58",
+                        "currency": {
+                            "name": "руб.",
+                             "code": "RUB"}
+                        }
+                    },]
 
 
 @patch("src.utils.json.load")
