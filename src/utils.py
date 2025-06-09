@@ -4,7 +4,7 @@ import os.path
 from src.external_api import convert_to_rub
 
 
-def get_list_transactions(json_file: json) -> list[dict]:
+def get_list_transactions(json_file) -> list[dict]:
     " Функция принимает файл формата json, и возвращает список транзакций."
 
     path_func = os.path.abspath(__file__)
