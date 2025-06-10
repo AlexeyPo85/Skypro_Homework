@@ -1,3 +1,5 @@
+import pytest
+
 from src.utils import get_list_transactions, get_amount_rub
 from unittest.mock import patch
 
@@ -48,6 +50,10 @@ def test_get_list_transactions_4(mocked_get):
     mocked_get.return_value = None
     result = get_list_transactions("operations.json")
     assert result == []
+
+
+def test_get_list_transactions_5():
+    assert get_list_transactions("none.json") == []
 
 
 def test_get_amount_rub(list_of_transactions_for_utils):

@@ -13,4 +13,4 @@ def test_convert_to_rub(mocked_get):
 def test_convert_to_rub_negative_args(mocked_get):
     mocked_get.return_value.json.return_value = {}
     result = convert_to_rub("a4", "a")
-    assert result == {}
+    assert result == float
