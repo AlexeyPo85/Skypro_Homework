@@ -53,7 +53,8 @@ def test_get_list_transactions_4(mocked_get):
 
 
 def test_get_list_transactions_5():
-    assert get_list_transactions("none.json") == []
+    with pytest.raises(FileNotFoundError):
+        get_list_transactions("none.json")
 
 
 def test_get_amount_rub(list_of_transactions_for_utils):

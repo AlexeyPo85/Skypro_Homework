@@ -9,17 +9,14 @@ def get_list_transactions(json_file) -> list:
 
     path_func = os.path.abspath(__file__)
     path_file = os.path.join(path_func, "..", "..", "data", json_file)
-    try:
-        with open(path_file, encoding="utf-8") as f:
-            try:
-                result = json.load(f)
-                if type(result) != list:
-                    return []
-                return result
-            except json.JSONDecodeError:
+    with open(path_file, encoding="utf-8") as f:
+        try:
+            result = json.load(f)
+            if type(result) != list:
                 return []
-    except FileNotFoundError:
-        return []
+            return result
+        except json.JSONDecodeError:
+            return []
 
 
 def get_amount_rub(transaction: dict) -> float:
@@ -31,4 +28,3 @@ def get_amount_rub(transaction: dict) -> float:
     else:
         return convert_to_rub(transaction["operationAmount"]["currency"]["code"],
                               transaction["operationAmount"]["amount"])
-
