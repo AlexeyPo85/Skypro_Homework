@@ -1,12 +1,16 @@
+import logging
+
 import requests
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
+logger = logging.getLogger("external_api")
+
 
 def convert_to_rub(code: str, amount: str) -> float:
-    " Функция конвертирует сумму в RUB по текущему курсу."
+    """ Функция конвертирует сумму в RUB по текущему курсу."""
 
     try:
         url = f'https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={code}&amount={amount}'
