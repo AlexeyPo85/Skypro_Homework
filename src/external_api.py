@@ -1,13 +1,12 @@
 import logging
-
-import requests
 import os
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
 logger = logging.getLogger("external_api")
-file_handler = logging.FileHandler("../logs/external_api.log","w", encoding="utf-8")
+file_handler = logging.FileHandler("../logs/external_api.log", "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -31,5 +30,5 @@ def convert_to_rub(code: str, amount: str) -> float:
         logger.info("Функция возвращает сумму транзакции в RUB")
         return result_amount
     except Exception:
-        logger.warning("Ошибка. Что-то пошло не так")
+        logger.error("Ошибка. Что-то пошло не так")
         return float

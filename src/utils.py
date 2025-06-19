@@ -5,7 +5,7 @@ import os.path
 from src.external_api import convert_to_rub
 
 logger = logging.getLogger("utils")
-file_handler = logging.FileHandler("../logs/utils.log","w", encoding="utf-8")
+file_handler = logging.FileHandler("../logs/utils.log", "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -23,8 +23,8 @@ def get_list_transactions(json_file) -> list:
         with open(path_file, encoding="utf-8") as f:
             try:
                 result = json.load(f)
-                if type(result) != list:
-                    logger.warning("Данные в файле не являются списком")
+                if type(result) is not list:
+                    logger.error("Данные в файле не являются списком")
                     return []
                 logger.info("Функция возвращает результат")
                 return result
