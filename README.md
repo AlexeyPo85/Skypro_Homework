@@ -2,7 +2,7 @@
 ## Описание
 Проект homework - это учебный проект для приобретения навыков работы Python-разработчика.
 Конкретно ведётся разработка виджета банковских операций клиента.
-### В проекте реализованы модули generators.py, masks.py, processing.py, widget.py, decorators.py, utils.py, external_api.py.
+### В проекте реализованы модули generators.py, masks.py, processing.py, widget.py, decorators.py, utils.py, external_api.py, read_csv_xlsx_file.py.
 В каждом модуле реализованы функции соответственно:
 1. masks.py
 * get_mask_card_number - Функция возвращает маску номера карты, 
@@ -35,6 +35,9 @@
     Если транзакция в USD или EUR, происходит конвертация в RUB по текущему курсу.
 7. external_api.py
 * convert_to_rub - Функция конвертирует сумму в RUB по текущему курсу.
+8. read_csv_xlsx_file.py
+* read_csv_file - Функция принимает путь к файлу csv и возвращает список словарей данных
+* read_xlsx_file - Функция принимает путь к файлу xlsx и возвращает список словарей данных
 ## Установка
 1. Клонируйте репозиторий
 ```
