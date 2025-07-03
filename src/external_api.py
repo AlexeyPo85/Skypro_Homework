@@ -5,8 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+path = os.path.abspath(__file__)
+path_to_file = os.path.join(path, "..", "..", "logs", "external_api.log")
 logger = logging.getLogger("external_api")
-file_handler = logging.FileHandler("../logs/external_api.log", "w", encoding="utf-8")
+file_handler = logging.FileHandler(path_to_file, "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

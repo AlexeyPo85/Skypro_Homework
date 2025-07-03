@@ -4,8 +4,10 @@ import os.path
 
 from src.external_api import convert_to_rub
 
+path = os.path.abspath(__file__)
+path_to_file = os.path.join(path, "..", "..", "logs", "utils.log")
 logger = logging.getLogger("utils")
-file_handler = logging.FileHandler("../logs/utils.log", "w", encoding="utf-8")
+file_handler = logging.FileHandler(path_to_file, "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
