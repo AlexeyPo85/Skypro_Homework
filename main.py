@@ -1,4 +1,3 @@
-import math
 import re
 
 from src.processing import filter_by_state, sort_by_date
@@ -102,7 +101,7 @@ def main():
                 else:
                     print(f"{" ".join(operation['to'].split()[:-1])} {mask_account_card(operation['to'])}")
                 print(f"Сумма: {operation['operationAmount']['amount']} "
-                        f"{operation['operationAmount']['currency']['name']}\n")
+                      f"{operation['operationAmount']['currency']['name']}\n")
         else:
             for operation in result_list:
                 print(f"{get_date(operation['date'])} {operation['description']}")
