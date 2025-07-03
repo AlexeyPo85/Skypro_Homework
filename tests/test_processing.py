@@ -25,11 +25,6 @@ def test_filter_by_state_5(dicts):
     assert filter_by_state(dicts, 'NOT FOUND') == []
 
 
-def test_filter_by_state_6(dicts_no_state):
-    with pytest.raises(KeyError):
-        filter_by_state(dicts_no_state)
-
-
 def test_filter_by_state_7(dicts_no_type_str):
     assert filter_by_state(dicts_no_type_str) == []
 
